@@ -12,8 +12,10 @@
     </ol>
 
     <h1>{{ $category->name }}</h1>
+
+    {!! $category->about ? nl2br($category->about) : '' !!}
+
     <hr>
-    {!! $category->about ? nl2br($category->about) . '<hr>' : '' !!}
 
     @if ($children->count())
         <div class="row categories-list-line">
@@ -28,6 +30,6 @@
             @each('catalog.product_tile', $products, 'product')
         </div>
     @else
-        <div>В этой категории нет товаров</div>
+        <div class="no-items">В этой категории нет товаров</div>
     @endif
 @endsection

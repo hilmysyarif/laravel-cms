@@ -1,7 +1,11 @@
 #slides {  }
 #slides .carousel-caption { padding-left: 30px; padding-right: 30px; padding-top: 0; background: rgba(0, 0, 0, 0.3); }
 
-#main { margin: 30px 0 0 0; }
+#blocks {
+    margin: 23px 0 0 0;
+}
+
+#main { margin: 23px 0 0 0; }
 
 .products-tiles {  }
 .products-tiles .product-tile { border: 1px solid #fe7920; margin: 0 0 30px 0; }

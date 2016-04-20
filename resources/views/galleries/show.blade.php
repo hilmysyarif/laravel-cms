@@ -6,7 +6,6 @@
     <div><a href="{{ route('galleries') }}"><i class="fa fa-chevron-left"></i> все альбомы</a></div>
     <h1>{{ $item->name }}</h1>
     <hr>
-    <div>&nbsp;</div>
     @if ($item->photos->count())
         <div class="gallery-photos">
             @foreach ($item->photos as $val)

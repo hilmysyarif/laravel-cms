@@ -25,9 +25,9 @@
 
     <title>@yield('title')</title>
 </head>
-<body style="padding-top: 70px;">
+<body>
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -56,6 +56,28 @@
 </nav>
 
 @yield('slides')
+
+<section id="blocks">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="jumbotron text-center lead">
+                    Блок 1
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="jumbotron text-center lead">
+                    Блок 2
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="jumbotron text-center lead">
+                    Блок 3
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 <section id="main">
     <div class="container">
@@ -88,7 +110,9 @@
 
 @include('partials._callback')
 @include('partials._flash')
-@yield('footer_scripts')
 @include('partials._metrika')
+
+@yield('footer_scripts')
+
 </body>
 </html>

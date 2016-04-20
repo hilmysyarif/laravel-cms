@@ -26,8 +26,8 @@ class ArticlesController extends FrontendController
      */
     public function show($slug)
     {
-        $article = Article::findBySlugOrFail($slug);
+        $item = Article::findBySlugOrFail($slug);
 
-        return view('articles.show', compact('article'));
+        return view('articles.show', compact('item'));
     }
 }

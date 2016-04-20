@@ -48,6 +48,11 @@
 .articles-list .item:last-child { border-bottom: none; }
 .articles-list .name { font-size: 150%; }
 
+.galleries-list { }
+.galleries-list .item { border-bottom: 1px solid #ddd; padding: 15px 0; }
+.galleries-list .item:last-child { border-bottom: none; }
+.galleries-list .name { font-size: 150%; }
+
 footer { background: #eee; margin: 100px 0 0 0; }
 footer .copyright { padding: 20px 0; }
 footer ul { margin: 30px 0; padding: 0; list-style: none; }

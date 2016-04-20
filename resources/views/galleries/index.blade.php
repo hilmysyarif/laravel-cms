@@ -5,10 +5,10 @@
 @section('content')
     <h1>Фотогалереи</h1>
     <hr>
-    <div class="categories-list">
+    <div class="galleries-list">
         @if ($galleries->count())
             @foreach($galleries as $gallery)
-                <div class="media category">
+                <div class="item media category">
                     <div class="media-left media-middle">
                         <div class="image"><a href="{{ url('/galleries/' . $gallery->slug) }}"><img src="{{ $gallery->image ? '/images/small/' . $gallery->img_url . $gallery->image : '/img/default.png' }}"></a></div>
                     </div>

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $article->title ? $article->title : $article->name)
+@section('title', $item->title ? $item->title : $item->name)
 
 @section('content')
     <div><a href="{{ route('articles') }}"><i class="fa fa-chevron-left"></i> все статьи</a></div>
-    <h1>{{ $article->name }}</h1>
-    {!! $article->text !!}
+    <h1>{{ $item->name }}</h1>
+    {!! $item->text !!}
 @endsection

@@ -26,8 +26,8 @@ class NewsController extends FrontendController
      */
     public function show($id)
     {
-        $newsItem = News::findOrFail($id);
+        $item = News::findOrFail($id);
 
-        return view('news.show', compact('newsItem'));
+        return view('news.show', compact('item'));
     }
 }

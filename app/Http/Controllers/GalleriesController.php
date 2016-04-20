@@ -26,8 +26,8 @@ class GalleriesController extends FrontendController
      */
     public function show($slug)
     {
-        $gallery = Gallery::findBySlugOrFail($slug);
+        $item = Gallery::findBySlugOrFail($slug);
 
-        return view('galleries.gallery', compact('gallery'));
+        return view('galleries.show', compact('item'));
     }
 }

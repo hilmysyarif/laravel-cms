@@ -14,7 +14,7 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
     /* App files */
     mix.styles([
-        '../../../bower_components/bootswatch/cosmo/bootstrap.min.css',
+        '../../../bower_components/bootswatch/paper/bootstrap.min.css',
         '../../../node_modules/sweetalert/dist/sweetalert.css',
         '../../../bower_components/magnific-popup/dist/magnific-popup.css',
         '../../../node_modules/font-awesome/css/font-awesome.min.css',
@@ -29,7 +29,8 @@ elixir(function(mix) {
         '../../../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js'
     ], 'public/js/app.bundle.js');
     mix.copy([
-        'node_modules/bootstrap/fonts'
+        'node_modules/bootstrap/fonts',
+        'node_modules/font-awesome/fonts/*.*',
     ], 'public/fonts');
 
 
@@ -59,20 +60,20 @@ elixir(function(mix) {
     ], 'public/js/admin.bundle.js');
 
     /* Jstree Files */
-    mix.copy([
-        'node_modules/jstree/dist'
-    ], 'public/library/jstree');
+    mix.copy('node_modules/jstree/dist', 'public/library/jstree');
 
     /* Materialize-css Files */
-    mix.copy([
-        'node_modules/materialize-css/dist/fonts'
-    ], 'public/fonts');
+    mix.copy('node_modules/materialize-css/dist/fonts', 'public/fonts');
 
     /* CKEDITOR Files */
     mix.copy([
-        'node_modules/ckeditor/ckeditor.js', 'node_modules/ckeditor/contents.css', 'node_modules/ckeditor/styles.js'
+        'node_modules/ckeditor/ckeditor.js',
+        'node_modules/ckeditor/contents.css',
+        'node_modules/ckeditor/styles.js'
     ], 'public/library/ckeditor');
-    mix.copy(['node_modules/ckeditor/lang/en.js', 'node_modules/ckeditor/lang/ru.js'
+    mix.copy([
+        'node_modules/ckeditor/lang/en.js',
+        'node_modules/ckeditor/lang/ru.js'
     ], 'public/library/ckeditor/lang');
     mix.copy('node_modules/ckeditor/plugins/*.*', 'public/library/ckeditor/plugins');
     mix.copy('node_modules/ckeditor/plugins/div', 'public/library/ckeditor/plugins/div');

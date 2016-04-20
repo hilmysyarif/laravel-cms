@@ -15,7 +15,7 @@ class ArticlesController extends FrontendController
     {
         $articles = Article::all();
 
-        return view('articles', compact('articles'));
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -28,6 +28,6 @@ class ArticlesController extends FrontendController
     {
         $article = Article::findBySlugOrFail($slug);
 
-        return view('articles', compact('article'));
+        return view('articles.show', compact('article'));
     }
 }

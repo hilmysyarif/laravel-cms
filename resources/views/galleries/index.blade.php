@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', 'Наше портфолио')
+@section('title', 'Фотогалереи')
 
 @section('content')
-    <h1>Наше портфолио</h1>
+    <h1>Фотогалереи</h1>
     <hr>
     <div class="categories-list">
         @if ($galleries->count())
@@ -19,7 +19,7 @@
                 </div>
             @endforeach
         @else
-            <div>Раздел пока пуст</div>
+            <div class="no-items">Раздел пока пуст</div>
         @endif
     </div>
 

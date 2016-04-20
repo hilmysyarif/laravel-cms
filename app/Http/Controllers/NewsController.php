@@ -15,7 +15,7 @@ class NewsController extends FrontendController
     {
         $news = News::orderBy('published_at', 'desc')->get();
 
-        return view('news', compact('news'));
+        return view('news.index', compact('news'));
     }
 
     /**
@@ -28,6 +28,6 @@ class NewsController extends FrontendController
     {
         $newsItem = News::findOrFail($id);
 
-        return view('news', compact('newsItem'));
+        return view('news.show', compact('newsItem'));
     }
 }

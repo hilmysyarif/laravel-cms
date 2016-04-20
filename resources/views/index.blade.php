@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Мебель комфорта')
+@section('title', 'Laravel CMS')
 
 @section('slides')
     @include('partials._slides')

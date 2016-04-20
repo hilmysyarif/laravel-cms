@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', isset($newsItem) ? $newsItem->title : 'Новости')
+@section('title', 'Новости')
 
 @section('content')
-    @if (isset($news))
-        <h1>Новости</h1>
-        <div>&nbsp;</div>
+    <h1>Новости</h1>
+    <hr>
+    @if ($news->count())
         <div class="news-list">
             @foreach($news as $value)
                 <div class="media">
@@ -19,12 +19,8 @@
                 </div>
             @endforeach
         </div>
+    @else
+        <div class="no-items">Раздел пока пуст</div>
     @endif
 
-    @if (isset($newsItem))
-        <div><a href="{{ route('news') }}"><i class="fa fa-chevron-left"></i> все новости</a></div>
-        <h1>{{ $newsItem->title }}</h1>
-        {!! $newsItem->text !!}
-        <div class="news-date"><i class="fa fa-clock-o"></i> {{ $newsItem->published_at }}</div>
-    @endif
 @endsection

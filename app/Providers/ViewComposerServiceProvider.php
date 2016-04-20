@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\Composers\FooterComposer;
+use App\Http\Composers\SlidesComposer;
 use Illuminate\Support\ServiceProvider;
 
 class ViewComposerServiceProvider extends ServiceProvider
@@ -15,6 +16,8 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->composeFooter();
+        $this->composeSlides();
+
     }
 
     /**
@@ -30,5 +33,10 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function composeFooter()
     {
         view()->composer('partials._footer', FooterComposer::class);
+    }
+
+    public function composeSlides()
+    {
+        view()->composer('partials._slides', SlidesComposer::class);
     }
 }

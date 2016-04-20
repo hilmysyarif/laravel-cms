@@ -25,61 +25,31 @@
 
     <title>@yield('title')</title>
 </head>
-<body>
+<body style="padding-top: 70px;">
 
-<header>
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
-        <div class="row logo-row">
-            <div class="col-lg-4 col-md-4 col-sm-6 logo">
-                <div class="logo-img">
-                    <a href="/"><img src="{{ asset('img/logo.png') }}" class="img-responsive"></a>
-                </div>
-                <div class="logo-text">
-                    <div class="site-name">мебель<br>КОМФОРТА</div>
-                    <div class="slogan">У нас свое производство</div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 phones">
-                <div class="phone">
-                    Телефон: <span>{{ $settings->phone }}</span>
-                </div>
-                <div class="phone-icons">
-                    <img src="{{ asset('img/phone.png') }}">
-                </div>
-            </div>
-            <div class="col-lg-5 col-md-5 col-sm-6 contacts text-right">
-                <div class="address">г.Москва, Алтуфьевское шоссе 33</div>
-                <div class="email">E-mail: {{ $settings->email }}</div>
-                <div class="row search">
-                    <form action="#search" method="GET" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <input type="text" class="form-control input-sm" name="search" placeholder="поиск по сайту">
-                    </form>
-                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        <select class="form-control input-sm" onchange="document.location = $(this).val();">
-                            <option value="" selected disabled>- Выберите категорию -</option>
-                            @foreach($categories as $category)
-                                <option value="{{ route('catalog.category', $category->slug) }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Меню</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="{{ route('index') }}">Laravel CMS</a>
         </div>
-    </div>
-</header>
-
-<nav>
-    <div class="container">
-        <div class="row">
-            <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="{{ url('/page/o-kompanii') }}">О компании</a></li>
-                <li><a href="{{ url('/page/kak-sdelat-zakaz') }}">Как сделать заказ</a></li>
-                <li><a href="{{ route('catalog') }}">Каталог</a></li>
+        <div class="collapse navbar-collapse" id="navbar">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ route('page.show', 'o-kompanii') }}">О компании</a></li>
+                <li><a href="{{ route('page.show', 'kontakty') }}">Контакты</a></li>
                 <li><a href="{{ route('articles') }}">Статьи</a></li>
-                <li><a href="{{ url('/page/proizvodstvo') }}">Производство</a></li>
-                <li><a href="{{ route('galleries') }}">Наше портфолио</a></li>
-                <li><a href="{{ url('/page/nashi-kontakty') }}">Наши контакты</a></li>
+                <li><a href="{{ route('news') }}">Новости</a></li>
+                <li><a href="{{ route('galleries') }}">Фотогалерея</a></li>
+                <li><a href="{{ route('feedback') }}">Обратная связь</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url('login') }}">Вход</a></li>
+                <li><a href="{{ url('register') }}">Регистрация</a></li>
             </ul>
         </div>
     </div>
@@ -87,49 +57,12 @@
 
 @yield('slides')
 
-<section id="blocks">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="block block-callback">
-                    <div><a href="#" onclick="return false" data-toggle="modal" data-target="#callbackModal">Обратный звонок</a></div>
-                    <p>Мы Вам перезвоним</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="block block-calculate">
-                    <div><a href="{{ route('calculation') }}">Онлайн расчет</a></div>
-                    <p>Удобно и быстро</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="block block-measure">
-                    <div><a href="{{ url('/page/zamer-i-dizayn') }}">Замер и Дизайн</a></div>
-                    <p>Выезд бесплатно</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6">
-                <div class="block block-delivery">
-                    <div><a href="{{ url('/page/dostavka') }}">Доставка</a></div>
-                    <p>Ознакомиться с условиями</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section id="main">
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-4">
-                <div class="caption-1">Каталог</div>
-                <div class="categories">
-                    <div class="categories-top"></div>
-                    <div class="categories-middle">
-                        @include('partials._categories')
-                    </div>
-                    <div class="categories-bottom"></div>
-                </div>
+                <p class="lead">Каталог</p>
+                @include('partials._categories')
             </div>
             <div class="col-lg-9 col-md-8">
                 @yield('content')
@@ -145,20 +78,14 @@
         </div>
         <div class="row">
             <ul>
-                <li><a href="/">Главная</a></li>
-                <li><a href="{{ url('/page/o-kompanii') }}">О компании</a></li>
-                <li><a href="{{ url('/page/kak-sdelat-zakaz') }}">Как сделать заказ</a></li>
-                <li><a href="{{ route('catalog') }}">Каталог</a></li>
-                <li><a href="{{ route('articles') }}">Статьи</a></li>
-                <li><a href="{{ url('/page/proizvodstvo') }}">Производство</a></li>
-                <li><a href="{{ route('galleries') }}">Наше портфолио</a></li>
-                <li><a href="{{ url('/page/nashi-kontakty') }}">Наши контакты</a></li>
+                <li><a href="{{ route('index') }}">Главная</a></li>
+                <li><a href="{{ route('page.show', 'o-kompanii') }}">О компании</a></li>
+                <li><a href="{{ route('page.show', 'kontakty') }}">Контакты</a></li>
             </ul>
         </div>
     </div>
 </footer>
 
-@include('partials._request_design')
 @include('partials._callback')
 @include('partials._flash')
 @yield('footer_scripts')

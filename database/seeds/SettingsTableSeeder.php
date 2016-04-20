@@ -14,6 +14,7 @@ class SettingsTableSeeder extends Seeder
     {
         $settings = new Settings();
         $settings->email       = 'jambik@gmail.com';
+        $settings->phone       = '+79123456789';
         $settings->description = '<p>Описание сайта</p>';
         $settings->save();
     }

@@ -1,0 +1,23 @@
+{
+  "name": "laravel-cms",
+  "version": "0.0.1",
+  "homepage": "https://github.com/jambik/laravel-cms",
+  "authors": [
+    "jambik <jambik@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "scrollup": "~2.4.1",
+    "bootswatch": "^3.3.6",
+    "dropzone": "^4.3.0",
+    "magnific-popup": "^1.1.0",
+    "jquery-ui": "^1.11.4"
+  }
+}

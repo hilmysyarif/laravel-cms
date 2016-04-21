@@ -25,6 +25,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'phone',
         'password',
         'provider_id',
         'provider',
@@ -45,9 +46,9 @@ class User extends Authenticatable
      * @param $userData
      * @return static
      */
-    public static function findByUserNameOrCreate($userData)
+    public static function findByEmailOrCreate($userData)
     {
-        $user = User::where('provider_id', $userData->id)->where('provider', $userData->provider)->first();
+        $user = User::where('email', $userData->email)->first();
 
         if( ! $user)
         {
@@ -56,7 +57,7 @@ class User extends Authenticatable
                 'provider' => $userData->provider,
                 'name' => $userData->name,
                 'email' => $userData->email,
-                'avatar' => $userData->avatar
+                'avatar' => $userData->avatar,
             ]);
         }
 
@@ -72,21 +73,24 @@ class User extends Authenticatable
     public static function checkIfUserNeedsUpdating($userData, $user)
     {
         $socialData = [
-            'avatar' => $userData->avatar,
-            'email'  => $userData->email,
-            'name'   => $userData->name
+            'provider_id' => $userData->id,
+            'provider'    => $userData->provider,
+            'name'        => $userData->name,
+            'avatar'      => $userData->avatar,
         ];
         $dbData = [
-            'avatar' => $user->avatar,
-            'email'  => $user->email,
-            'name'   => $user->name
+            'provider_id' => $user->provider_id,
+            'provider'    => $user->provider,
+            'name'        => $user->name,
+            'avatar'      => $user->avatar,
         ];
 
-        if (!empty(array_diff($socialData, $dbData)))
+        if ( ! empty(array_diff($socialData, $dbData)))
         {
-            $user->avatar = $userData->avatar;
-            $user->email  = $userData->email;
-            $user->name   = $userData->name;
+            $user->provider_id = $userData->id;
+            $user->provider    = $userData->provider;
+            $user->name        = $userData->name;
+            $user->avatar      = $userData->avatar;
             $user->save();
         }
     }

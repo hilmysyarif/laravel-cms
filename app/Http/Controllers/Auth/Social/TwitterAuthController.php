@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth\Social;
 
 use App\User;
 use Flash;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Socialite;
 use Illuminate\Routing\Controller;
 
@@ -34,12 +34,12 @@ class TwitterAuthController extends Controller
         $userData->email = $userData->email ?: '';
         $userData->avatar = $userData->avatar ?: '';
 
-        $user = User::findByUserNameOrCreate($userData);
+        $user = User::findByEmailOrCreate($userData);
 
         $auth->login($user, true);
 
         Flash::success("Выполнен вход через Twitter");
 
-        return redirect('/');
+        return redirect(route('index'));
     }
 }

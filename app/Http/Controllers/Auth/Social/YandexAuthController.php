@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth\Social;
 
 use App\User;
 use Flash;
-use Illuminate\Auth\Guard;
+use Illuminate\Contracts\Auth\Guard;
 use Socialite;
 use Illuminate\Routing\Controller;
 
@@ -34,12 +34,12 @@ class YandexAuthController extends Controller
         $userData->email = $userData->email ?: $userData->user['default_email'];
         $userData->avatar = $userData->avatar ?: "http://avatars.mds.yandex.net/get-yapic/".$userData->user['default_avatar_id']."/islands-50";
 
-        $user = User::findByUserNameOrCreate($userData);
+        $user = User::findByEmailOrCreate($userData);
 
         $auth->login($user, true);
 
         Flash::success("Выполнен вход через Яндекс");
 
-        return redirect('/');
+        return redirect(route('index'));
     }
 }

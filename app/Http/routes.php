@@ -100,9 +100,17 @@ Route::group([], function ()
     Route::get('catalog/{category}', ['as' => 'catalog.category', 'uses' => 'CatalogController@category']); // category page
     Route::get('product/{product}', ['as' => 'catalog.product', 'uses' => 'CatalogController@product']); // product page
 
-    ## Calculation request page
-    Route::get('calculation', ['as' => 'calculation', 'uses' => 'CalculationController@calculate']);
-    Route::post('calculation', ['as' => 'calculation.send', 'uses' => 'CalculationController@send']);
+    ## Profile routes
+    Route::group(['middleware' => 'auth'], function ()
+    {
+        Route::get('profile', ['as' => 'profile.personal', 'uses' => 'ProfileController@personalShow']); // personal data
+        Route::post('profile', ['as' => 'profile.personal.save', 'uses' => 'ProfileController@personalSave']); // personal data save
+        Route::get('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@passwordShow']); // change password form
+        Route::post('profile/password', ['as' => 'profile.password.save', 'uses' => 'ProfileController@passwordSave']); // change password save
+        Route::get('profile/orders', ['as' => 'profile.orders', 'uses' => 'ProfileController@orders']); // orders
+        Route::get('profile/avatar', ['as' => 'profile.avatar', 'uses' => 'ProfileController@avatarShow']); // avatar
+        Route::post('profile/avatar', ['as' => 'profile.avatar.save', 'uses' => 'ProfileController@avatarSave']); // avatar save
+    });
 
     ## Social routes
     Route::get('auth/github', 'Auth\Social\GitHubAuthController@redirectToProvider');

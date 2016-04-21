@@ -48,8 +48,21 @@
                 <li><a href="{{ route('feedback') }}">Обратная связь</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('login') }}"><i class="fa fa-sign-in"></i> Вход</a></li>
-                <li><a href="{{ url('register') }}"><i class="fa fa-user"></i> Регистрация</a></li>
+                @if (Auth::check())
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="true">
+                            <img class="avatar img-circle img-thumbnail" src="{{ Auth::check() && Auth::user()->avatar ? Auth::user()->avatar : asset('img/avatar.png') }}">
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownUser">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('profile.personal') }}"><i class="fa fa-user"></i> Профиль</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Выход</a></li>
+                        </ul>
+                    </li>
+                @else
+                    <li><a href="{{ url('login') }}"><i class="fa fa-sign-in"></i> Вход</a></li>
+                    <li><a href="{{ url('register') }}"><i class="fa fa-user"></i> Регистрация</a></li>
+                @endif
             </ul>
         </div>
     </div>

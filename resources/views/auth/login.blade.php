@@ -1,8 +1,9 @@
 @extends('layouts.auth')
 
-<p>&nbsp;</p>
+@section('title', 'Логин')
 
 @section('content')
+    <p>&nbsp;</p>
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -99,7 +100,7 @@
                         <hr>
                         <div>&nbsp;</div>
                         <p class="text-center">
-                            <a href="{{ url('/register') }}">Регистрация на сайте</a>
+                            <a href="{{ url('/register') }}"><i class="fa fa-btn fa-user"></i> Регистрация на сайте</a>
                         </p>
                         <div>&nbsp;</div>
                     </div>

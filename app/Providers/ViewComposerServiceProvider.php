@@ -15,7 +15,6 @@ class ViewComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->composeFooter();
         $this->composeSlides();
 
     }
@@ -28,11 +27,6 @@ class ViewComposerServiceProvider extends ServiceProvider
     public function register()
     {
         //
-    }
-
-    public function composeFooter()
-    {
-        view()->composer('partials._footer', FooterComposer::class);
     }
 
     public function composeSlides()

@@ -1,7 +1,7 @@
 <?php
 
 /* ------------------------------------------- Admin routes --------------------------------------------------------- */
-Route::group(['prefix' => 'admin', 'middleware' => 'web'], function()
+Route::group(['prefix' => 'admin'], function()
 {
     ## Admin login/logout
     Route::get('login', ['as' => 'admin.login', 'uses' =>'Admin\Auth\AuthController@getLogin']);
@@ -58,18 +58,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], function()
         ## Administrators
         Route::resource('administrators', 'Admin\AdministratorsController');
 
-        ## Cupboard Heights
-        Route::resource('cupboard_heights', 'Admin\CupboardHeightsController');
-
         ## Sortable routes
         Route::post('sort', ['as' => 'sort', 'uses' => '\Rutorika\Sortable\SortableController@sort']);
     });
 });
 
 
-
 /* --------------------------------------------- App routes --------------------------------------------------------- */
-Route::group(['middleware' => 'web'], function ()
+Route::group([], function ()
 {
     ## Authentication / Registration / Password Reset
     Route::auth();
@@ -80,9 +76,6 @@ Route::group(['middleware' => 'web'], function ()
     # Feedback
     Route::get('feedback', ['as' => 'feedback', 'uses' => 'CommonController@feedback']);
     Route::post('feedback', ['as' => 'feedback.send', 'uses' => 'CommonController@feedbackSend']);
-
-    ## Design request
-    Route::post('request_design', ['as' => 'request.design', 'uses' => 'CommonController@requestDesign']);
 
     ## Callback
     Route::post('callback', ['as' => 'callback', 'uses' => 'CommonController@callback']);
@@ -102,12 +95,10 @@ Route::group(['middleware' => 'web'], function ()
     Route::get('galleries', ['as' => 'galleries', 'uses' => 'GalleriesController@index']);
     Route::get('galleries/{slug}', ['as' => 'galleries.show', 'uses' => 'GalleriesController@show']);
 
-    ## Catalog - index page
-    Route::get('catalog', ['as' => 'catalog', 'uses' => 'CatalogController@index']);
-    ## Catalog - category page
-    Route::get('catalog/{category}', ['as' => 'catalog.category', 'uses' => 'CatalogController@category']);
-    ## Catalog - product page
-    Route::get('product/{product}', ['as' => 'catalog.product', 'uses' => 'CatalogController@product']);
+    ## Catalog
+    Route::get('catalog', ['as' => 'catalog', 'uses' => 'CatalogController@index']); // index page
+    Route::get('catalog/{category}', ['as' => 'catalog.category', 'uses' => 'CatalogController@category']); // category page
+    Route::get('product/{product}', ['as' => 'catalog.product', 'uses' => 'CatalogController@product']); // product page
 
     ## Calculation request page
     Route::get('calculation', ['as' => 'calculation', 'uses' => 'CalculationController@calculate']);

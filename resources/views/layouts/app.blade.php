@@ -36,7 +36,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="{{ route('index') }}">Laravel CMS</a>
+            <a class="navbar-brand" href="{{ route('index') }}"><img alt="Brand" src="{{ asset('img/logo.png') }}" style="width: 30px; display: inline-block; vertical-align: middle;" class="img-responsive"> Laravel CMS</a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
@@ -54,6 +54,18 @@
         </div>
     </div>
 </nav>
+
+<header>
+    <div class="container">
+        <div class="pull-left">
+
+        </div>
+        <div class="pull-right">
+            <div>Телефон: {{ $settings->phone }}</div>
+            <div>Email: {{ $settings->email }}</div>
+        </div>
+    </div>
+</header>
 
 @yield('slides')
 

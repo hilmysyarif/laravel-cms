@@ -66,6 +66,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'web'], function()
     });
 });
 
+
+
 /* --------------------------------------------- App routes --------------------------------------------------------- */
 Route::group(['middleware' => 'web'], function ()
 {

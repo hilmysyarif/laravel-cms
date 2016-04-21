@@ -66,7 +66,7 @@ class CommonController extends FrontendController
             $message->subject('Обратная связь');
         });
 
-        return redirect(route('page.show', 'nashi-kontakty'))->with('status', 'Сообщение отправлено');
+        return redirect(route('feedback'))->with('status', 'Сообщение отправлено');
     }
 
     /**
@@ -105,6 +105,6 @@ class CommonController extends FrontendController
             ]);
         }
 
-        return redirect('feedback')->with('status', 'Заявка на обратный звонок отправлена');
+        return redirect(route('index'))->with('status', 'Заявка на обратный звонок отправлена');
     }
 }

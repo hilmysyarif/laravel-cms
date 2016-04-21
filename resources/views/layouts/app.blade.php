@@ -48,8 +48,8 @@
                 <li><a href="{{ route('feedback') }}">Обратная связь</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url('login') }}">Вход</a></li>
-                <li><a href="{{ url('register') }}">Регистрация</a></li>
+                <li><a href="{{ url('login') }}"><i class="fa fa-sign-in"></i> Вход</a></li>
+                <li><a href="{{ url('register') }}"><i class="fa fa-user"></i> Регистрация</a></li>
             </ul>
         </div>
     </div>
@@ -57,10 +57,15 @@
 
 <header>
     <div class="container">
-        <div class="pull-left">
+        <div class="col-lg-4">
 
         </div>
-        <div class="pull-right">
+        <div class="col-lg-4 text-center">
+            <div class="lead">
+                <a href="#" data-toggle="modal" data-target="#callbackModal"><i class="fa fa-volume-control-phone" aria-hidden="true"></i> Обратный звонок</a>
+            </div>
+        </div>
+        <div class="col-lg-4 text-right">
             <div>Телефон: {{ $settings->phone }}</div>
             <div>Email: {{ $settings->email }}</div>
         </div>
@@ -115,6 +120,10 @@
                 <li><a href="{{ route('index') }}">Главная</a></li>
                 <li><a href="{{ route('page.show', 'o-kompanii') }}">О компании</a></li>
                 <li><a href="{{ route('page.show', 'kontakty') }}">Контакты</a></li>
+                <li><a href="{{ route('articles') }}">Статьи</a></li>
+                <li><a href="{{ route('news') }}">Новости</a></li>
+                <li><a href="{{ route('galleries') }}">Фотогалерея</a></li>
+                <li><a href="{{ route('feedback') }}">Обратная связь</a></li>
             </ul>
         </div>
     </div>

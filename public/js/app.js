@@ -1,18 +1,12 @@
 $(document).ready(function() {
 
-    if ($('#form_request_design').length) {
-        $('#form_request_design').on('submit', function(e){
-            ajaxFormSubmit(e, requestDesignSuccess);
-        })
-    }
-
     if ($('#form_callback').length) {
         $('#form_callback').on('submit', function(e){
             ajaxFormSubmit(e, callbackSuccess);
         })
     }
 
-    if ($('.popup-gallery').length){
+    if ($('.popup-gallery').length) {
         $('.popup-gallery').magnificPopup({
             type: 'image',
             zoom: {
@@ -28,7 +22,7 @@ $(document).ready(function() {
         });
     }
 
-    if ($('.popup-product').length){
+    if ($('.popup-product').length) {
         $('.popup-product').magnificPopup({
             type: 'image',
             zoom: {
@@ -38,21 +32,7 @@ $(document).ready(function() {
         });
     }
 
-    // Проверяем не установлен ли Вид гарнитуры, если да то отображем нужную картинку, если нет то выбираем первую
-    if ($('input[name=furniture_type]:checked').length){
-        $('#furnitureTypeImage').html('<img src="/img/'+$('input[name=furniture_type]:checked').data('img')+'">');
-    }
-    else if ($('input[name=furniture_type]').length){
-        $('input[name=furniture_type]')[0].checked = true;
-        changeFurnitureType($('input[name=furniture_type]')[0]);
-    }
-
 });
-
-function changeFurnitureType(element)
-{
-    $('#furnitureTypeImage').html('<img src="/img/'+$(element).data('img')+'">');
-}
 
 function ajaxFormSubmit(e, successFunction)
 {
@@ -62,12 +42,13 @@ function ajaxFormSubmit(e, successFunction)
 
     // Место для отображения ошибок в форме
     var formStatus = $(form).find('.form-status');
-    if (formStatus.length) formStatus.html('');
+    if (formStatus.length) {
+        formStatus.html('');
+    }
 
     // Анимированная кнопка при отправки формы
     var formButton = $(form).find('.form-button');
-    if (formButton.length)
-    {
+    if (formButton.length) {
         formButton.append(' <i class="fa fa-spinner fa-spin"></i>');
         formButton.prop('disabled', true);
     }
@@ -109,12 +90,6 @@ function ajaxFormSubmit(e, successFunction)
             }
         }
     });
-}
-
-function requestDesignSuccess(data)
-{
-    $('#requestDesignModal').modal('hide');
-    showNoty(data.message, 'success');
 }
 
 function callbackSuccess(data)

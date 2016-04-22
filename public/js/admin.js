@@ -180,25 +180,3 @@ function changePosition(requestData)
         }
     });
 };
-
-function deleteImage(element)
-{
-    var $preloader = $(element).next('.preloader');
-
-    if ($preloader.length){
-        $preloader.show();
-    }
-
-    $.post($(element).data('requestUrl'), { '_method': 'DELETE' }, function(data){
-        $(element).parent().remove();
-        console.log(data);
-    }, 'json')
-    .fail(function(){
-        sweetAlert("", "Ошибка при запросе к серсеру", 'error');
-    })
-    .always(function(){
-        if ($preloader.length){
-            $preloader.hide();
-        }
-    });
-}

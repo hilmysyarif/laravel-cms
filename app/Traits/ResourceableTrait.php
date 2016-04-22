@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Flash;
+use Route;
 
 trait ResourceableTrait
 {
@@ -12,15 +13,21 @@ trait ResourceableTrait
     public static function bootResourceableTrait()
     {
         static::created(function ($model){
-            Flash::success("Запись #{$model->id} сохранена");
+            if (in_array('admin', Route::current()->getAction()['middleware'])) {
+                Flash::success("Запись #{$model->id} сохранена");
+            }
         });
 
         static::updated(function ($model){
-            Flash::success("Запись #{$model->id} обновлена");
+            if (in_array('admin', Route::current()->getAction()['middleware'])) {
+                Flash::success("Запись #{$model->id} обновлена");
+            }
         });
 
         static::deleted(function ($model){
-            Flash::success("Запись #{$model->id} удалена");
+            if (in_array('admin', Route::current()->getAction()['middleware'])) {
+                Flash::success("Запись #{$model->id} удалена");
+            }
         });
     }
 }

@@ -13,21 +13,7 @@
     {!! Form::text('published_at', null, ['class' => 'validate'.($errors->has('published_at') ? ' invalid' : '')]) !!}
 </div>
 
-<div class="input-field file-field col s12">
-    <div class="btn">
-        <span>Фото</span>
-        {!! Form::file('image') !!}
-    </div>
-    <div class="file-path-wrapper">
-        <input class="file-path validate{{ $errors->has('image') ? ' invalid' : '' }}" type="text" placeholder="Выберите файл">
-    </div>
-</div>
-
-@if (isset($item) && $item->image)
-    <div class="col s12">
-        <img src="/images/medium/{{ $item->img_url.$item->image }}" alt="" />
-    </div>
-@endif
+@include('imageable::imageable')
 
 <div class="input-field col s12 center">
     <button type="submit" class="btn-large waves-effect waves-light"><i class="material-icons left">check_circle</i> {{ $submitButtonText }}</button>
@@ -38,5 +24,6 @@
 </div>
 
 @section('head_scripts')
+    <script src="{{ url('/vendor/imageable/js/imageable.js') }}"></script>
     <script src="/library/ckeditor/ckeditor.js"></script>
 @endsection

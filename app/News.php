@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Traits\ImageableTrait;
+use Jambik\Imageable\ImageableTrait;
 use App\Traits\ResourceableTrait;
 use Illuminate\Database\Eloquent\Model;
 

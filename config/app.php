@@ -160,6 +160,8 @@ return [
         /*
          * Vendor Service Providers...
          */
+        Jambik\Imageable\ImageableServiceProvider::class,
+
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,

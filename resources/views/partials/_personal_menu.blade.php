@@ -4,3 +4,4 @@
     <li role="presentation"{!! isset($avatarActive)   ? ' class="active"' : '' !!}><a href="{{ route('profile.avatar') }}">Аватар</a></li>
     <li role="presentation"{!! isset($ordersActive)   ? ' class="active"' : '' !!}><a href="{{ route('profile.orders') }}">Заказы</a></li>
 </ul>
+<hr>

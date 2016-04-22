@@ -2,45 +2,27 @@
 
 namespace App;
 
+use App\Traits\ImageableTrait;
 use App\Traits\ResourceableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;
 
 class User extends Authenticatable
 {
-    use EntrustUserTrait, ResourceableTrait;
+    use EntrustUserTrait, ImageableTrait, ResourceableTrait;
 
-    /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
     protected $table = 'users';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'phone',
-        'password',
-        'provider_id',
-        'provider',
-        'avatar'
-    ];
+    protected $fillable = ['name', 'email', 'phone', 'password', 'provider_id', 'provider', 'avatar', 'image'];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    protected $appends = ['img_url'];
+
+    protected $hidden = ['password', 'remember_token'];
+
+    public function getAvatarAttribute($value)
+    {
+        return $this->image ? '/images/small/' . $this->img_url . $this->image : $value;
+    }
 
     /**
      * @param $userData

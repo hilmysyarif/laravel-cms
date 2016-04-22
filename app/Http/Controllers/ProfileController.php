@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
+use Image;
 use Validator;
 
 class ProfileController extends FrontendController
@@ -92,9 +93,20 @@ class ProfileController extends FrontendController
 
     public function avatarSave(Request $request)
     {
-        // TODO: Сохранение аватара
+        $this->validate($request, [
+            'image' => 'required|mimes:jpeg,bmp,png,gif',
+        ]);
 
-        return redirect(route('profile.avatar'))->with('status', 'Ваш аватар изменен');
+        Auth::user()->saveImage();
+
+        $data = $request->has('avatar_data') ? json_decode(stripslashes($request->input('avatar_data'))) : false;
+
+        if ($data) {
+            $img = Image::make(Auth::user()->imagePath() . DIRECTORY_SEPARATOR . Auth::user()->image);
+            $img->crop((int)$data->width, (int)$data->height, (int)$data->x, (int)$data->y)->save();
+        }
+
+        return redirect(route('profile.avatar'))->with('status', 'Аватар сохранен');
     }
 
     public function orders()

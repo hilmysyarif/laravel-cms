@@ -51,11 +51,12 @@
                 @if (Auth::check())
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" id="dropdownUser" data-toggle="dropdown" aria-expanded="true">
-                            <img class="avatar img-circle img-thumbnail" src="{{ Auth::check() && Auth::user()->avatar ? Auth::user()->avatar : asset('img/avatar.png') }}">
+                            <img class="avatar img-circle img-thumbnail" src="{{ Auth::user()->avatar ?: asset('img/avatar.png') }}">
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownUser">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('profile.personal') }}"><i class="fa fa-user"></i> Профиль</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ route('profile.personal') }}"><i class="fa fa-user"></i> Личный кабинет</a></li>
+                            <li class="divider"></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Выход</a></li>
                         </ul>
                     </li>

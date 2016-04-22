@@ -114,3 +114,42 @@ function showNoty(message, type)
         }
     });
 }
+
+function avatarSelected()
+{
+    startCropper($('#avatar_file')[0].files[0]);
+
+    $('#avatar_cropper').show();
+    $('#avatar_current').hide();
+}
+
+function startCropper(file)
+{
+    var $img = $('<img src="' + URL.createObjectURL(file) + '">');
+    $('#avatar_wrapper').empty().html($img);
+
+    $img.cropper({
+        aspectRatio: 1,
+        preview: $('.avatar-preview').selector,
+        strict: true,
+        guides: false,
+        crop: function (e) {
+            var json = [
+                '{"x":' + e.x,
+                '"y":' + e.y,
+                '"height":' + e.height,
+                '"width":' + e.width,
+                '"rotate":' + e.rotate + '}'
+            ].join();
+            $('#avatar_data').val(json);
+        }
+    });
+}
+
+function cancelAvatarUpload()
+{
+    URL.revokeObjectURL($('#avatar_file')[0].files[0].url); // Revoke the old one
+
+    $('#avatar_cropper').hide();
+    $('#avatar_current').show();
+}

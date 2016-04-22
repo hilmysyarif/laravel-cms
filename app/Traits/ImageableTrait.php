@@ -35,15 +35,17 @@ trait ImageableTrait
      * Save Item Image
      *
      * @return void
+     * @throws \Symfony\Component\HttpFoundation\File\Exception\FileException
+     * @throws \InvalidArgumentException
      */
     public function saveImage()
     {
         if (request()->hasFile('image'))
         {
-            $imageName      = strtolower(class_basename($this)).'-'.$this->id;
+            $imageName      = strtolower(class_basename($this)) . '-' . $this->id;
             $imageExtension = strtolower(request()->file('image')->getClientOriginalExtension());
 
-            $file = request()->file('image')->move($this->imagePath(), $imageName.".".$imageExtension);
+            $file = request()->file('image')->move($this->imagePath(), $imageName . "." . $imageExtension);
             $this->image = $file->getFilename();
 
             DB::table($this->getTable())
@@ -76,7 +78,7 @@ trait ImageableTrait
      */
     public function deleteImageFile()
     {
-        return File::delete($this->imagePath().DIRECTORY_SEPARATOR.$this->image);
+        return File::delete($this->imagePath() . DIRECTORY_SEPARATOR . $this->image);
     }
 
     /**
@@ -97,7 +99,7 @@ trait ImageableTrait
      */
     public function imagePath()
     {
-        return storage_path('images').DIRECTORY_SEPARATOR.$this->getTable();
+        return storage_path('images') . DIRECTORY_SEPARATOR . $this->getTable();
     }
 
     /**
@@ -107,7 +109,7 @@ trait ImageableTrait
      */
     public function imageUrl()
     {
-        return $this->getTable().'/';
+        return $this->getTable() . '/';
     }
 
 }

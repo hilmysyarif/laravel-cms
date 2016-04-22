@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('provider')->default('');
             $table->string('provider_id')->default('');
             $table->string('password')->default('');
+            $table->string('image')->default('');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -5,10 +5,6 @@
 @section('content')
     @include('partials._personal_menu', ['personalActive' => true])
 
-    <div class="page-header">
-        <h4 class="text-center">Персональные данные</h4>
-    </div>
-
     @include('partials._status')
     @include('partials._errors')
 
@@ -59,7 +55,7 @@
 
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-block btn-primary">Обновить</button>
+                <button type="submit" class="btn btn-block btn-primary">Обновить данные</button>
             </div>
         </div>
     </form>

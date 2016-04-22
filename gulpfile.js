@@ -17,6 +17,7 @@ elixir(function(mix) {
         '../../../bower_components/bootswatch/paper/bootstrap.min.css',
         '../../../node_modules/sweetalert/dist/sweetalert.css',
         '../../../bower_components/magnific-popup/dist/magnific-popup.css',
+        '../../../bower_components/cropper/dist/cropper.min.css',
         '../../../node_modules/font-awesome/css/font-awesome.min.css',
         '../../../node_modules/animate.css/animate.min.css'
     ], 'public/css/app.bundle.css');
@@ -26,7 +27,8 @@ elixir(function(mix) {
         '../../../node_modules/sweetalert/dist/sweetalert.min.js',
         '../../../node_modules/jquery.scrollto/jquery.scrollTo.min.js',
         '../../../node_modules/noty/js/noty/packaged/jquery.noty.packaged.min.js',
-        '../../../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js'
+        '../../../bower_components/magnific-popup/dist/jquery.magnific-popup.min.js',
+        '../../../bower_components/cropper/dist/cropper.min.js',
     ], 'public/js/app.bundle.js');
     mix.copy([
         'node_modules/bootstrap/fonts',

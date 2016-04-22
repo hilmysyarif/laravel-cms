@@ -85,6 +85,17 @@ $factory->defineAs(App\Photo::class, 'gallery', function ($faker) {
 });
 
 $factory->define(App\Product::class, function (Faker\Generator $faker) {
+
+    $categories = App\Category::all();
+
+    foreach($categories as $key => $category) {
+        if ($category->descendants->count()){
+            unset($categories[$key]);
+        }
+    }
+
+    $categoryIds = $categories->pluck('id')->all();
+
     return [
         'name' => $faker->company,
         'price' => $faker->randomFloat(2, 99, 100000),
@@ -95,7 +106,7 @@ $factory->define(App\Product::class, function (Faker\Generator $faker) {
         'title' => $faker->sentence(2),
         'keywords' => implode(', ', $faker->words(4)),
         'description' => $faker->sentence(),
-        'category_id' => $faker->numberBetween(1, 8),
+        'category_id' => $faker->randomElement($categoryIds),
         'image' => $faker->image(storage_path('images').DIRECTORY_SEPARATOR.'products', 640, 480, null, false, false),
     ];
 });

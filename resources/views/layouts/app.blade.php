@@ -42,6 +42,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ route('page.show', 'o-kompanii') }}">О компании</a></li>
                 <li><a href="{{ route('page.show', 'kontakty') }}">Контакты</a></li>
+                <li><a href="{{ route('catalog') }}">Каталог</a></li>
                 <li><a href="{{ route('articles') }}">Статьи</a></li>
                 <li><a href="{{ route('news') }}">Новости</a></li>
                 <li><a href="{{ route('galleries') }}">Фотогалерея</a></li>
@@ -134,6 +135,7 @@
                 <li><a href="{{ route('index') }}">Главная</a></li>
                 <li><a href="{{ route('page.show', 'o-kompanii') }}">О компании</a></li>
                 <li><a href="{{ route('page.show', 'kontakty') }}">Контакты</a></li>
+                <li><a href="{{ route('catalog') }}">Каталог</a></li>
                 <li><a href="{{ route('articles') }}">Статьи</a></li>
                 <li><a href="{{ route('news') }}">Новости</a></li>
                 <li><a href="{{ route('galleries') }}">Фотогалерея</a></li>

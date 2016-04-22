@@ -13,7 +13,7 @@
 
     <h1>{{ $category->name }}</h1>
 
-    {!! $category->about ? nl2br($category->about) : '' !!}
+    {!! $category->about !!}
 
     <hr>
 

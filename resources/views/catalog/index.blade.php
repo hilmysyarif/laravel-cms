@@ -3,16 +3,24 @@
 @section('title', 'Каталог')
 
 @section('content')
-
-    <div>
+    <h1>Каталог</h1>
+    <hr>
+    <div class="row categories-list">
         @foreach($categories as $category)
-            @if ($topProducts = $category->products()->limit(3)->get())
-                <div class="caption-block"><div>{{ $category->name }}<a href="{{ url('/catalog/' . $category->slug) }}">подробнее</a></div></div>
-                <div class="row products-tiles">
-                    @each('catalog.product_tile', $topProducts, 'product')
+            <div class="col-md-4 category">
+                <div class="">
+                    <a href="{{ route('catalog.category', $category->slug) }}">
+                        <div class="img">
+                            @if ($category->image)
+                                <img src="/images/medium/{{ $category->img_url . $category->image }}" class="img-responsive img-thumbnail img-circle">
+                            @else
+                                <img src="/img/default.png" class="img-responsive img-thumbnail img-circle">
+                            @endif
+                        </div>
+                        <div class="name">{{ $category->name }}</div>
+                    </a>
                 </div>
-            @endif
+            </div>
         @endforeach
     </div>
-
 @endsection

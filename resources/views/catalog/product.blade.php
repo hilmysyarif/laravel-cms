@@ -11,6 +11,8 @@
         <li class="active"><a href="{{ route('catalog.category', $category->slug) }}">{{ $category->name }}</a></li>
     </ol>
 
+    <h1>{{ $product->name }}</h1>
+
     <div class="row product">
         <div class="col-lg-7 images">
             @if ($product->image)
@@ -26,27 +28,24 @@
                     @endforeach
                 </p>
             @endif
-
-                <a href="#" onclick="$('#request-design-product').html('{{ $product->name }}'); $('#request-design-product').next().val('{{ $product->name }}'); return false;" data-toggle="modal" data-target="#requestDesignModal" class="call-designer">Заказать дизайн/замер</a>
         </div>
         <div class="col-lg-5 info">
-            <h1>{{ $product->name }}</h1>
-
-            @if ($product->material)
-                <p class="material"><strong>Материал:</strong> {{ trans('vars.material')[$product->material] }}</p>
-            @endif
-
             <div class="price-calculate">
                 <div class="price">
-                    от <strong>{{ $product->price }}</strong> руб.
-                    <span>расчет от погонного метра</span>
+                    <strong>{{ $product->price }}</strong> руб.
                 </div>
-                <div class="calculate">
-                    <a href="#"><img src="{{ asset('img/calculator.png') }}"></a>
-                    <span><a href="#">оставить замеры</a></span>
+                <div class="add-cart">
+                    <a href="#">
+                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                        <span>Добавить<br>в&nbsp;корзину</span>
+                    </a>
                 </div>
                 <div class="clearfix"></div>
             </div>
+
+            @if ($product->material)
+                <p class="property"><strong>Материал:</strong> {{ trans('vars.material')[$product->material] }}</p>
+            @endif
 
             @if ($product->brief)
                 <p class="brief">{{ $product->brief }}</p>

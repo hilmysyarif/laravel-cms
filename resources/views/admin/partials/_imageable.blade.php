@@ -1,7 +1,7 @@
 <div class="input-field file-field col s12">
     <div class="btn">
         <span>Фото</span>
-        <input type="file" name="image" id="image">
+        {!! Form::file('image') !!}
     </div>
     <div class="file-path-wrapper">
         <input class="file-path validate{{ $errors->has('image') ? ' invalid' : '' }}" type="text" placeholder="Выберите файл">

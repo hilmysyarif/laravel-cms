@@ -21,7 +21,6 @@ Route::group(['prefix' => 'admin'], function()
         ## Categories
         Route::resource('categories', 'Admin\CategoriesController');
         Route::match(['get', 'post'], 'categories/move', ['as' => 'admin.categories.move', 'uses' =>'Admin\CategoriesController@move']);
-        Route::delete('categories/{id}/image', ['as' => 'admin.categories.image_delete', 'uses' =>'Admin\CategoriesController@imageDelete'])->where('id', '[0-9]+');
 
         ## Products
         Route::resource('products', 'Admin\ProductsController');
@@ -59,6 +58,9 @@ Route::group(['prefix' => 'admin'], function()
 
         ## Sortable routes
         Route::post('sort', ['as' => 'sort', 'uses' => '\Rutorika\Sortable\SortableController@sort']);
+
+        ## Imageable routes
+        Route::delete('imageable', ['as' => 'imageable.delete', 'uses' => 'Admin\ImageableController@delete']);
     });
 });
 
@@ -102,8 +104,8 @@ Route::group([], function ()
     ## Profile routes
     Route::group(['middleware' => 'auth'], function ()
     {
-        Route::get('profile', ['as' => 'profile.personal', 'uses' => 'ProfileController@personalShow']); // personal data
-        Route::post('profile', ['as' => 'profile.personal.save', 'uses' => 'ProfileController@personalSave']); // personal data save
+        Route::get('profile/personal', ['as' => 'profile.personal', 'uses' => 'ProfileController@personalShow']); // personal data
+        Route::post('profile/personal', ['as' => 'profile.personal.save', 'uses' => 'ProfileController@personalSave']); // personal data save
         Route::get('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@passwordShow']); // change password form
         Route::post('profile/password', ['as' => 'profile.password.save', 'uses' => 'ProfileController@passwordSave']); // change password save
         Route::get('profile/orders', ['as' => 'profile.orders', 'uses' => 'ProfileController@orders']); // orders

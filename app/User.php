@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Jambik\Imageable\ImageableTrait;
+use App\Traits\ImageableTrait;
 use App\Traits\ResourceableTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Zizaco\Entrust\Traits\EntrustUserTrait;

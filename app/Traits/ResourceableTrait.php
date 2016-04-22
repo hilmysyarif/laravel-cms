@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App;
 use Flash;
 use Route;
 
@@ -13,20 +14,32 @@ trait ResourceableTrait
     public static function bootResourceableTrait()
     {
         static::created(function ($model){
-            if (in_array('admin', Route::current()->getAction()['middleware'])) {
-                Flash::success("Запись #{$model->id} сохранена");
+            if( ! App::runningInConsole()) {
+                $currentMiddlewares = Route::current()->getAction()['middleware'];
+                $currentMiddlewares = is_array($currentMiddlewares) ? $currentMiddlewares : [$currentMiddlewares];
+                if (in_array('admin', $currentMiddlewares)) {
+                    Flash::success("Запись #{$model->id} сохранена");
+                }
             }
         });
 
         static::updated(function ($model){
-            if (in_array('admin', Route::current()->getAction()['middleware'])) {
-                Flash::success("Запись #{$model->id} обновлена");
+            if( ! App::runningInConsole()) {
+                $currentMiddlewares = Route::current()->getAction()['middleware'];
+                $currentMiddlewares = is_array($currentMiddlewares) ? $currentMiddlewares : [$currentMiddlewares];
+                if (in_array('admin', $currentMiddlewares)) {
+                    Flash::success("Запись #{$model->id} обновлена");
+                }
             }
         });
 
         static::deleted(function ($model){
-            if (in_array('admin', Route::current()->getAction()['middleware'])) {
-                Flash::success("Запись #{$model->id} удалена");
+            if( ! App::runningInConsole()) {
+                $currentMiddlewares = Route::current()->getAction()['middleware'];
+                $currentMiddlewares = is_array($currentMiddlewares) ? $currentMiddlewares : [$currentMiddlewares];
+                if (in_array('admin', $currentMiddlewares)) {
+                    Flash::success("Запись #{$model->id} удалена");
+                }
             }
         });
     }

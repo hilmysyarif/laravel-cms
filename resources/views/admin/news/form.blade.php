@@ -13,7 +13,7 @@
     {!! Form::text('published_at', null, ['class' => 'validate'.($errors->has('published_at') ? ' invalid' : '')]) !!}
 </div>
 
-@include('imageable::imageable')
+@include('admin.partials._imageable')
 
 <div class="input-field col s12 center">
     <button type="submit" class="btn-large waves-effect waves-light"><i class="material-icons left">check_circle</i> {{ $submitButtonText }}</button>
@@ -24,6 +24,5 @@
 </div>
 
 @section('head_scripts')
-    <script src="{{ url('/vendor/imageable/js/imageable.js') }}"></script>
     <script src="/library/ckeditor/ckeditor.js"></script>
 @endsection

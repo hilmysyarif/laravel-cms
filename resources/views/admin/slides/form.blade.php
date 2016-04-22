@@ -13,7 +13,7 @@
     {!! Form::text('url', null, ['class' => 'validate materialize-textarea'.($errors->has('url') ? ' invalid' : '')]) !!}
 </div>
 
-@include('imageable::imageable')
+@include('admin.partials._imageable')
 
 <div class="input-field col s12 center">
     <button type="submit" class="btn-large waves-effect waves-light"><i class="material-icons left">check_circle</i> {{ $submitButtonText }}</button>
@@ -22,7 +22,3 @@
 <div class="input-field col s12 center">
     <a href="{{ route('admin.slides.index') }}" class="btn grey waves-effect waves-light">Отмена</a>
 </div>
-
-@section('head_scripts')
-    <script src="{{ url('/vendor/imageable/js/imageable.js') }}"></script>
-@endsection

@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Jambik\Imageable\ImageableTrait;
+use App\Traits\ImageableTrait;
 use App\Traits\ResourceableTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;

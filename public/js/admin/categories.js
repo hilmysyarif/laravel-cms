@@ -152,26 +152,6 @@ new Vue({
             });
         },
 
-        deleteImage: function(e){
-            var that = this;
-
-            if (e) {
-                e.preventDefault();
-            }
-
-            that.deletingImage = true;
-
-            $.post(that.baseUrl + '/' + that.node.id + '/image', { '_method': 'DELETE' }, function(data){
-                that.node.image = '';
-            })
-            .fail(function(){
-                sweetAlert("", "Ошибка при запросе к серсеру", 'error');
-            })
-            .always(function(){
-                that.deletingImage = false;
-            });
-        },
-
         resetNodeForm: function(){
             var that = this;
 

@@ -65,9 +65,9 @@
                     <div  v-show="! deletingImage">
                         <div><img class="responsive-img circle z-depth-3" :src="'/images/small/' + node.img_url + node.image"></div>
                         <div>&nbsp;</div>
-                        <div><button class="btn btn-small red waves-effect waves-light" v-on:click="deleteImage($event)"><i class="material-icons">delete</i></button></div>
+                        <button class="btn btn-small red waves-effect waves-light" type="button" title="Удалить фото" onclick="deleteImage(this)" data-request-url="{{ route('imageable.delete') }}" data-model-class="App\Category" :data-model-id="node.id"><i class="material-icons">delete</i></button>
+                        <div class="preloader-wrapper small active preloader" v-show="deletingImage"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
                     </div>
-                    <div class="preloader-wrapper small active" v-show="deletingImage"><div class="spinner-layer spinner-red-only"><div class="circle-clipper left"><div class="circle"></div></div><div class="gap-patch"><div class="circle"></div></div><div class="circle-clipper right"><div class="circle"></div></div></div></div>
                 </div>
 
                 <div class="col s12 center">

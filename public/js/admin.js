@@ -182,7 +182,7 @@ function changePosition(requestData)
 };
 
 /**
- * Удаление фотографии
+ * Удаление картинки
  *
  * @param element HTML Элемент (Кнопка или ссылка удаления)
  */

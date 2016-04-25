@@ -23,7 +23,7 @@ class Product extends Model implements SluggableInterface
         'category_id' => 'int',
     ];
 
-    protected $appends = ['img_url'];
+    protected $appends = ['img_url', 'photo_url'];
 
     protected $sluggable = [
         'build_from' => 'name',

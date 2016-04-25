@@ -19,6 +19,16 @@ trait PhotoableTrait
     }
 
     /**
+     * Get Photo url path attribute
+     *
+     * @return string
+     */
+    public function getPhotoUrlAttribute()
+    {
+        return $this->photoUrl();
+    }
+
+    /**
      * Photos relation
      *
      * @return mixed
@@ -39,11 +49,11 @@ trait PhotoableTrait
         $imageName      = strtolower(class_basename($this)).'-'.$this->id;
         $imageExtension = strtolower($request->file('photo')->getClientOriginalExtension());
 
-        $photoFile = $request->file('photo')->move($this->imagePath(), $imageName.'-'.uniqid().'.'.$imageExtension);
+        $photoFile = $request->file('photo')->move($this->photoPath(), $imageName.'-'.uniqid().'.'.$imageExtension);
 
         $item = $this->photos()->create([
             'image'   => $photoFile->getFilename(),
-            'img_url' => $this->imageUrl(),
+            'img_url' => $this->photoUrl(),
         ]);
 
         return $item['image'];
@@ -52,12 +62,10 @@ trait PhotoableTrait
     /**
      * Delete photo
      *
-     * @param $id
+     * @param Photo $photo
      */
-    public function deletePhoto($id)
+    public function deletePhoto(Photo $photo)
     {
-        $photo = $this->photos()->findOrFail($id);
-
         $this->deletePhotoFile($photo);
         $this->deletePhotoModel($photo);
     }
@@ -70,7 +78,7 @@ trait PhotoableTrait
      */
     public function deletePhotoFile(Photo $photo)
     {
-        return File::delete($this->imagePath().DIRECTORY_SEPARATOR.$photo->image);
+        return File::delete($this->photoPath().DIRECTORY_SEPARATOR.$photo->image);
     }
 
     /**
@@ -86,20 +94,34 @@ trait PhotoableTrait
 
     /**
      * Delete all photos
-     *
-     * @return bool|null
      */
     public function deletePhotos()
     {
         if ($this->photos->count()) {
             foreach ($this->photos as $photo) {
-                $this->deletePhoto($photo->id);
+                $this->deletePhoto($photo);
             }
-
-            return true;
         }
+    }
 
-        return null;
+    /**
+     * Get Photo directory path
+     *
+     * @return string
+     */
+    public function photoPath()
+    {
+        return storage_path('images') . DIRECTORY_SEPARATOR . $this->getTable();
+    }
+
+    /**
+     * Get Photo url path
+     *
+     * @return string
+     */
+    public function photoUrl()
+    {
+        return $this->getTable() . '/';
     }
 
 }

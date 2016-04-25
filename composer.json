@@ -32,7 +32,8 @@
         "symfony/dom-crawler": "2.8.*|3.0.*",
         "itsgoingd/clockwork": "^1.10",
         "barryvdh/laravel-ide-helper": "^2.1",
-        "barryvdh/laravel-debugbar": "^2.2"
+        "barryvdh/laravel-debugbar": "^2.2",
+        "caouecs/laravel-lang": "^3.0"
     },
     "autoload": {
         "classmap": [

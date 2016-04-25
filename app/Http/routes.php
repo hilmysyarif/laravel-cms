@@ -24,13 +24,9 @@ Route::group(['prefix' => 'admin'], function()
 
         ## Products
         Route::resource('products', 'Admin\ProductsController');
-        Route::post('products/{id}/photo', ['as' => 'admin.products.photo', 'uses' =>'Admin\ProductsController@photo'])->where('id', '[0-9]+');
-        Route::delete('products/{id}/photo/{photoId}', ['as' => 'admin.products.photo.delete', 'uses' =>'Admin\ProductsController@photoDelete'])->where(['id' => '[0-9]+', 'photoId' => '[0-9]+']);
 
         ## Galleries
         Route::resource('galleries', 'Admin\GalleriesController');
-        Route::post('galleries/{id}/photo', ['as' => 'admin.galleries.photo', 'uses' =>'Admin\GalleriesController@photo'])->where('id', '[0-9]+');
-        Route::delete('galleries/{id}/photo/{photoId}', ['as' => 'admin.galleries.photo.delete', 'uses' =>'Admin\GalleriesController@photoDelete'])->where(['id' => '[0-9]+', 'photoId' => '[0-9]+']);
 
         ## Photos
         Route::resource('photos', 'Admin\PhotosController');
@@ -61,6 +57,10 @@ Route::group(['prefix' => 'admin'], function()
 
         ## Imageable routes
         Route::delete('imageable', ['as' => 'imageable.delete', 'uses' => 'Admin\ImageableController@delete']);
+
+        ## Photoable routes
+        Route::post('photoable', ['as' => 'photoable.save', 'uses' =>'Admin\PhotoableController@savePhoto']);
+        Route::delete('photoable/{id}', ['as' => 'photoable.delete', 'uses' => 'Admin\PhotoableController@deletePhoto'])->where('id', '[0-9]+');
     });
 });
 

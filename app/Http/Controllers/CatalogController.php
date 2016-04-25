@@ -42,7 +42,7 @@ class CatalogController extends FrontendController
      */
     public function product($slug)
     {
-        $product = Product::findBySlugOrFail($slug);
+        $product = Product::findBySlugOrIdOrFail($slug);
         $category = $product->category;
 
         $sameProductsCount = 3;

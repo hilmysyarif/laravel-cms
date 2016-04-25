@@ -17,7 +17,7 @@ class Gallery extends Model implements SluggableInterface
 
     protected $fillable = ['name', 'slug', 'text', 'image'];
 
-    protected $appends = ['img_url'];
+    protected $appends = ['img_url', 'photo_url'];
 
     protected $sluggable = [
         'build_from' => 'name',

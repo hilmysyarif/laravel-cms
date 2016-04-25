@@ -16,7 +16,6 @@ class IndexController extends FrontendController
      */
     public function index()
     {
-        dd(app());
         $page = Page::find(1);
 
         $products1 = Product::whereCategoryId('2')->limit(3)->get();

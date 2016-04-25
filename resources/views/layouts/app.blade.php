@@ -72,6 +72,10 @@
 
 <header>
     <div class="container">
+        <div class="row">
+            @include('partials._status')
+            @include('partials._errors')
+        </div>
         <div class="col-sm-4">
 
         </div>

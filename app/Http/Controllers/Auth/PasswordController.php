@@ -27,6 +27,8 @@ class PasswordController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected $subject = 'Сброс пароля';
+
     /**
      * Create a new password controller instance.
      *
@@ -35,5 +37,11 @@ class PasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
+        view()->composer('auth.emails.password', function($view) {
+            $data = config('beautymail.view');
+            $data['logo']['path'] = str_replace('%PUBLIC%', \Request::getSchemeAndHttpHost(), $data['logo']['path']);
+            $view->with($data);
+        });
     }
 }

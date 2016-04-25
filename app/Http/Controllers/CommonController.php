@@ -6,6 +6,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use Mail;
 use ReCaptcha\ReCaptcha;
+use Snowfire\Beautymail\Beautymail;
 use Validator;
 
 class CommonController extends FrontendController
@@ -60,9 +61,11 @@ class CommonController extends FrontendController
             $this->throwValidationException($request, $validator);
         }
 
-        Mail::queue('emails.feedback', ['input' => $request->all()], function ($message) {
+        $beautymail = app()->make(Beautymail::class);
+        $beautymail->send('emails.feedback', ['input' => $request->all()], function($message)
+        {
             $message->from(env('MAIL_ADDRESS'), env('MAIL_NAME'));
-            $message->to(env('MAIL_ADDRESS'));
+            $message->to($this->settings['email'] ?: env('MAIL_ADDRESS'));
             $message->subject('Обратная связь');
         });
 
@@ -92,9 +95,11 @@ class CommonController extends FrontendController
             $this->throwValidationException($request, $validator);
         }
 
-        Mail::queue('emails.callback', ['input' => $request->all()], function ($message) {
+        $beautymail = app()->make(Beautymail::class);
+        $beautymail->send('emails.callback', ['input' => $request->all()], function($message)
+        {
             $message->from(env('MAIL_ADDRESS'), env('MAIL_NAME'));
-            $message->to(env('MAIL_ADDRESS'));
+            $message->to($this->settings['email'] ?: env('MAIL_ADDRESS'));
             $message->subject('Обратный звонок');
         });
 

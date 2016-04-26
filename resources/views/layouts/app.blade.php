@@ -78,7 +78,8 @@
         </div>
         <div class="row">
             <div class="col-sm-4">
-
+                <div>Телефон: {{ $settings->phone }}</div>
+                <div>Email: {{ $settings->email }}</div>
             </div>
             <div class="col-sm-4 text-center">
                 <div class="lead">
@@ -86,8 +87,14 @@
                 </div>
             </div>
             <div class="col-sm-4 text-right">
-                <div>Телефон: {{ $settings->phone }}</div>
-                <div>Email: {{ $settings->email }}</div>
+                <form action="{{ route('search') }}" method="GET" class="inline-form">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control input-sm" placeholder="Поиск по сайту">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default btn-sm" type="button">Go!</button>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

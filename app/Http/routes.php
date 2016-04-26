@@ -74,6 +74,9 @@ Route::group([], function ()
     ## Index
     Route::get('/', ['as' => 'index', 'uses' => 'IndexController@index']);
 
+    ## Search
+    Route::get('/search', ['as' => 'search', 'uses' => 'SearchController@search']);
+
     # Feedback
     Route::get('feedback', ['as' => 'feedback', 'uses' => 'CommonController@feedback']);
     Route::post('feedback', ['as' => 'feedback.send', 'uses' => 'CommonController@feedbackSend']);

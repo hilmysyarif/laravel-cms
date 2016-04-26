@@ -69,6 +69,13 @@ class CommonController extends FrontendController
             $message->subject('Обратная связь');
         });
 
+        if ($request->ajax()){
+            return json_encode([
+                'status' => 'ok',
+                'message' => 'Сообщение отправлено',
+            ]);
+        }
+
         return redirect(route('feedback'))->with('status', 'Сообщение отправлено');
     }
 

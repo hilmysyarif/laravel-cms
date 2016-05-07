@@ -19,6 +19,16 @@
     "dropzone": "^4.3.0",
     "magnific-popup": "^1.1.0",
     "jquery-ui": "^1.11.4",
-    "cropper": "^2.3.0"
+    "cropper": "^2.3.0",
+    "animate.css": "^3.5.1",
+    "font-awesome": "^4.6.2",
+    "jquery": "^2.2.3",
+    "bootstrap": "^3.3.6",
+    "datetimepicker": "^2.5.3",
+    "jquery.scrollTo": "^2.1.2",
+    "noty": "^2.3.8",
+    "sweetalert": "^1.1.3",
+    "Materialize": "materialize#^0.97.6",
+    "jstree": "^3.3.1"
   }
 }

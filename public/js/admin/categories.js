@@ -189,7 +189,6 @@ new Vue({
                     type: 'POST',
                     data: formData,
                     cache: false,
-                    dataType: 'json',
                     processData: false,
                     contentType: false,
                     success: function(data){

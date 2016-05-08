@@ -57,7 +57,6 @@ function ajaxFormSubmit(e, successFunction)
         method: $(form).attr('method'),
         url: $(form).attr('action'),
         data: $(form).serialize(),
-        dataType: 'json',
         success: function (data)
         {
             successFunction(data);

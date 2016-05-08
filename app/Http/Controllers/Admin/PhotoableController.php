@@ -26,7 +26,7 @@ class PhotoableController extends BackendController
         $photoName = $item->savePhoto($request);
 
         if($request->ajax()) {
-            return json_encode([
+            return response()->json([
                 'status'  => 'ok',
                 'image'   => $photoName,
                 'img_url' => $item->img_url,
@@ -51,7 +51,7 @@ class PhotoableController extends BackendController
         $photo->photoable->deletePhoto($photo);
 
         if($request->ajax()) {
-            return json_encode([
+            return response()->json([
                 'status'  => 'ok',
                 'message' => 'Фотография удалена',
             ]);

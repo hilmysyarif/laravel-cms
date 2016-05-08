@@ -70,7 +70,7 @@ class CommonController extends FrontendController
         });
 
         if ($request->ajax()){
-            return json_encode([
+            return response()->json([
                 'status' => 'ok',
                 'message' => 'Сообщение отправлено',
             ]);
@@ -111,7 +111,7 @@ class CommonController extends FrontendController
         });
 
         if ($request->ajax()){
-            return json_encode([
+            return response()->json([
                 'status' => 'ok',
                 'message' => 'Заявка на обратный звонок отправлена',
             ]);

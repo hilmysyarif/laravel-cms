@@ -30,7 +30,7 @@ class CategoriesController extends BackendController
         $items = $this->model->withDepth()->defaultOrder()->get()->toTree();
 
         if($request->ajax()) {
-            return $items;
+            return response()->json($items);
         }
 
         return view('admin.'.$this->resourceName.'.index', compact('items'));
@@ -63,7 +63,7 @@ class CategoriesController extends BackendController
         $item->saveImage($item, $request);
 
         if ($request->ajax()){
-            return $item;
+            return response()->json($item);
         }
 
         return view('admin.'.$this->resourceName.'.index', compact('item'));
@@ -81,7 +81,7 @@ class CategoriesController extends BackendController
         $item = $this->model->findOrFail($id);
 
         if ($request->ajax()){
-            return $item;
+            return response()->json($item);
         }
 
         return view('admin.'.$this->resourceName.'.index', compact('item'));
@@ -117,7 +117,7 @@ class CategoriesController extends BackendController
         $item->update($request->all());
 
         if($request->ajax()) {
-            return $item;
+            return response()->json($item);
         }
 
         return view('admin.'.$this->resourceName.'.index', compact('item'));
@@ -137,7 +137,7 @@ class CategoriesController extends BackendController
         $item->delete();
 
         if ($request->ajax()){
-            return json_encode([
+            return response()->json([
                 'status' => 'ok'
             ]);
         }
@@ -159,7 +159,7 @@ class CategoriesController extends BackendController
         $category->deleteImage(true);
 
         if ($request->ajax()){
-            return json_encode([
+            return response()->json([
                 'status' => 'ok',
                 'message' => 'Картинка удалена',
             ]);
@@ -200,7 +200,7 @@ class CategoriesController extends BackendController
         }
 
         if($request->ajax()){
-            return json_encode([
+            return response()->json([
                 'status' => 'ok'
             ]);
         }

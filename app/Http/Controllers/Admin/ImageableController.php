@@ -24,7 +24,7 @@ class ImageableController extends BackendController
         $item->deleteImage(true);
 
         if($request->ajax()) {
-            return json_encode([
+            return response()->json([
                 'status'  => 'ok',
                 'message' => 'Фотография удалена',
             ]);

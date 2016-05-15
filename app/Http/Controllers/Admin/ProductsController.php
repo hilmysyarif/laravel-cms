@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\BackendController;
 use App\Product;
-use Flash;
 use Illuminate\Http\Request;
 
 class ProductsController extends BackendController
@@ -28,7 +27,7 @@ class ProductsController extends BackendController
      */
     public function index(Request $request)
     {
-        $category = $request->has('category') && $request->has('category') ? $request->get('category') : null;
+        $category = $request->has('category') ? $request->get('category') : null;
 
         $items = $category ? $this->model->whereCategoryId($category)->get() : collect([]);
 

@@ -14,21 +14,21 @@
     "tests"
   ],
   "dependencies": {
-    "scrollup": "~2.4.1",
-    "bootswatch": "^3.3.6",
-    "dropzone": "^4.3.0",
-    "magnific-popup": "^1.1.0",
-    "jquery-ui": "^1.11.4",
-    "cropper": "^2.3.0",
     "animate.css": "^3.5.1",
-    "font-awesome": "^4.6.2",
-    "jquery": "^2.2.3",
     "bootstrap": "^3.3.6",
+    "bootswatch": "^3.3.6",
+    "cropper": "^2.3.0",
     "datetimepicker": "^2.5.3",
+    "dropzone": "^4.3.0",
+    "font-awesome": "^4.6.2",
+    "jstree": "^3.3.1",
+    "jquery": "^2.2.3",
     "jquery.scrollTo": "^2.1.2",
-    "noty": "^2.3.8",
-    "sweetalert": "^1.1.3",
+    "jquery-ui": "^1.11.4",
+    "magnific-popup": "^1.1.0",
     "Materialize": "materialize#^0.97.6",
-    "jstree": "^3.3.1"
+    "noty": "^2.3.8",
+    "scrollup": "~2.4.1",
+    "sweetalert": "^1.1.3"
   }
 }

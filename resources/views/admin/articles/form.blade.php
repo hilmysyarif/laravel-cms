@@ -16,6 +16,11 @@
     {!! Form::textarea('text', null, ['class' => 'materialize-textarea validate'.($errors->has('text') ? ' invalid' : '')]) !!}
 </div>
 
+<div class="input-field col s12 input-tags">
+    {!! Form::label('tags', 'Теги') !!}
+    {!! Form::text('tags', isset($item) ? $item->tags_string : null, ['class' => 'validate'.($errors->has('tags') ? ' invalid' : '')]) !!}
+</div>
+
 <div class="input-field col s12">
     {!! Form::label('title', 'Title (META)') !!}
     {!! Form::text('title', null, ['class' => 'validate'.($errors->has('title') ? ' invalid' : '')]) !!}
@@ -41,4 +46,25 @@
 
 @section('head_scripts')
     <script src="/library/ckeditor/ckeditor.js"></script>
+@endsection
+
+@section('footer_scripts')
+    <script>
+        var tags = [@foreach ($tags as $tag) {tag: "{{$tag}}" }, @endforeach];
+        $(document).ready(function() {
+            $('#tags').selectize({
+                delimiter: ',',
+                persist: false,
+                valueField: 'tag',
+                labelField: 'tag',
+                searchField: 'tag',
+                options: tags,
+                create: function(input) {
+                    return {
+                        tag: input
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

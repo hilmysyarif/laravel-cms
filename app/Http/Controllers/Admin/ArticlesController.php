@@ -37,7 +37,9 @@ class ArticlesController extends BackendController
      */
     public function create()
     {
-        return view('admin.'.$this->resourceName.'.create');
+        $tags = $this->model->existingTags()->pluck('name');
+
+        return view('admin.'.$this->resourceName.'.create', compact('tags'));
     }
 
     /**
@@ -52,7 +54,9 @@ class ArticlesController extends BackendController
             'name' => 'required',
         ]);
 
-        $this->model->create($request->all());
+        $item = $this->model->create($request->all());
+
+        $request->tags ? $item->tag(explode(',', $request->tags)) : null;
 
         return redirect(route('admin.'.$this->resourceName.'.index'));
     }
@@ -77,8 +81,9 @@ class ArticlesController extends BackendController
     public function edit($id)
     {
         $item = $this->model->findOrFail($id);
+        $tags = $this->model->existingTags()->pluck('name');
 
-        return view('admin.'.$this->resourceName.'.edit', compact('item'));
+        return view('admin.'.$this->resourceName.'.edit', compact('item', 'tags'));
     }
 
     /**
@@ -98,6 +103,8 @@ class ArticlesController extends BackendController
         $item = $this->model->findOrFail($id);
 
         $item->update($request->all());
+
+        $request->tags ? $item->retag(explode(',', $request->tags)) : $item->untag();
 
         return redirect(route('admin.'.$this->resourceName.'.index'));
     }

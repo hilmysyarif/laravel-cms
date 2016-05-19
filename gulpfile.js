@@ -42,7 +42,9 @@ elixir(function(mix) {
         '../../../bower_components/animate.css/animate.min.css',
         '../../../bower_components/sweetalert/dist/sweetalert.css',
         '../../../bower_components/datetimepicker/jquery.datetimepicker.css',
-        '../../../bower_components/dropzone/dist/min/dropzone.min.css'
+        '../../../bower_components/dropzone/dist/min/dropzone.min.css',
+        '../../../bower_components/selectize/dist/css/selectize.default.css'
+
     ], 'public/css/admin.bundle.css');
     mix.scripts([
         '../../../bower_components/jquery/dist/jquery.min.js',
@@ -55,6 +57,7 @@ elixir(function(mix) {
         '../../../node_modules/tablesorter/dist/js/extras/jquery.tablesorter.pager.min.js',
         '../../../bower_components/datetimepicker/build/jquery.datetimepicker.full.min.js',
         '../../../bower_components/dropzone/dist/min/dropzone.min.js',
+        '../../../bower_components/selectize/dist/js/standalone/selectize.min.js',
         '../../../bower_components/jquery-ui/ui/minified/core.min.js',
         '../../../bower_components/jquery-ui/ui/minified/widget.min.js',
         '../../../bower_components/jquery-ui/ui/minified/mouse.min.js',
